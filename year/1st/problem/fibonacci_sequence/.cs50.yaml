@@ -1,2 +1,4 @@
-check50: true
-slug: mmanrus/checker/year/1st/problem/fibonacci_sequence
+check50:
+  checks: 'fibonacci_sequence.py'
+  slug: mmanrus/checker/year/1st/problem/fibonacci_sequence
+  
