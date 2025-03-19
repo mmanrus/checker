@@ -8,7 +8,7 @@ def exists():
 @check50.check(exists)
 def compiles():
     """Checks if addition_subtraction.c compiles successfully"""
-    check50.compile("addition_subtraction.c")
+    check50.c.compile("addition_subtraction.c")
 
 @check50.check(compiles)
 def checkFunctions():
