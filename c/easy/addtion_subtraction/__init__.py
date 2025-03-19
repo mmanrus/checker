@@ -2,28 +2,30 @@ import check50
 
 @check50.check()
 def exists():
-     check50.exists("addition_subtraction.c")
-     
-@check50.check(exists)  # Mark 'compiles' as a check that depends on 'exists'
+    """Checks if addition_subtraction.c exists"""
+    check50.exists("addition_subtraction.c")
+
+@check50.check(exists)
 def compiles():
-     check50.c.compile("addition_subtraction.c")
-     
+    """Checks if addition_subtraction.c compiles successfully"""
+    check50.compile("addition_subtraction.c")
+
 @check50.check(compiles)
 def checkFunctions():
-     result = check50.run("./addition_subtraction").stdin("12 34").stdout()
-     
-     expected_output = "Sum: 46\nDifference: -22"
-    
+    """Checks if addition and subtraction work correctly for 12 and 34"""
+    result = check50.run("./addition_subtraction").stdin("12 34").stdout()
 
-     if expected_output not in result:
-        help = "Error Running: Output should be:\nSum: 46\nDifference: -22"
-        raise check50.Mismatch("ERROR: Please enter an integer", result, help=help)
+    expected_output = "Sum: 46\nDifference: -22\n"
+
+    if expected_output not in result:
+        raise check50.Mismatch(expected_output, result, help="Expected output does not match.")
 
 @check50.check(compiles)
 def checkAgain():
-     result = check50.run("./addition_subtraction").stdin("20 25").stdout()
-     expected_output = "Sum: 45\nDifference: -5"
+    """Checks if addition and subtraction work correctly for 20 and 25"""
+    result = check50.run("./addition_subtraction").stdin("20 25").stdout()
 
-     if expected_output not in result:
-        help = "Error Running: Output should be:\nSum: 46\nDifference: -22"
-        raise check50.Mismatch("ERROR: Please enter an integer", result, help=help)
+    expected_output = "Sum: 45\nDifference: -5\n"
+
+    if expected_output not in result:
+        raise check50.Mismatch(expected_output, result, help="Expected output does not match.")
