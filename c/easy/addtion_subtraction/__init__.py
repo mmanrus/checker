@@ -10,4 +10,18 @@ def compiles():
      
 @check50.check(compiles)
 def checkFunctions():
-     check50.run("./addition_subtraction").stdin("12 34").stdout(46).exit(0)
+     result = check50.run("./addition_subtraction").stdin("12 34").stdout()
+     
+     expected_sum = "Sum: 46"
+     expected_difference = "Difference: -22"
+     result.match(expected_sum)
+     result.match(expected_difference)
+
+@check50.check(compiles)
+def checkAgain():
+     result = check50.run("./addition_subtraction").stdin("20 25").stdout()
+     
+     expected_sum = "Sum: 45"
+     expected_difference = "Difference: -5"
+     result.match(expected_sum)
+     result.match(expected_difference)
