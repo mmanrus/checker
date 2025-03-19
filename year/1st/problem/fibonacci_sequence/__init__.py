@@ -1,9 +1,9 @@
 import check50
-
+import re
 
 @check50.check()
 def exists():
-     check50.exists('fibonacci_sequence.py')
+     check50.exists(r'(fibonacci_sequence)\.[.py]$')
      
 @check50.check(exists)
 def check_valueerror():
