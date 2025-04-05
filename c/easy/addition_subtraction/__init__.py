@@ -9,6 +9,7 @@ def exists():
 def compiles():
     """Checks if addition_subtraction.c compiles successfully"""
     check50.run("gcc -o addition_subtraction addition_subtraction.c").exit(0)
+    # or make addition_subtraction.c
 
 @check50.check(compiles)
 def checkFunctions():
